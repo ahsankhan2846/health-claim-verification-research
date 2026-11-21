@@ -5,9 +5,10 @@ Muhammad Ahsan Department of Computer Science
 
 ## Abstract
 
-Health questions are often typed in English, Urdu script, or Roman Urdu, yet verification systems are rarely tested on whether the same claim receives the same verdict across these written forms. We present a 70-claim parallel benchmark (210 language-form entries) for health-claim verification in English, Urdu script, and Roman Urdu, covering seven topics with ten claims each. Each claim is linked to an official public-health source (WHO, CDC, NHS, FDA) and labelled Supported, Refuted, or Insufficient. We describe the construction, a translation and evidence-review protocol, a three-condition evaluation design (zero-shot, few-shot, translate-then-verify), and an analysis pipeline using cluster bootstrap intervals, exact McNemar tests with Holm correction, and claim-level cross-form consistency. We also report a design limitation found in our own audit: in the current release, wording and label are confounded, since every Insufficient claim contains an absolute or exact-quantity term, so a lexical rule alone scores 65.7% (46/70). We specify a revised labelling rule and a minimal-pair extension to remove this confound. We report a pilot run of one small open model, Qwen2.5-1.5B-Instruct, zero-shot. Accuracy was 55.7% in English and 32.9% in both Urdu and Roman Urdu; the English-versus-Urdu differences are significant after Holm correction (adjusted p = 0.007). However, the Urdu-form accuracy equals the rate of always answering Refuted (23/70), and the model gave that answer for 59 and 66 of the 70 claims, so the gap reflects near-collapse to one label, not a measured difference between the two scripts. Translate-then-verify could not be evaluated fairly because of a protocol deviation, and few-shot was not run. These results concern one 1.5-billion-parameter model on a benchmark whose translations and labels are still unreviewed. Keywords: multilingual fact verification; Urdu NLP; Roman Urdu; health misinformation; script robustness
+We introduce a 70-claim parallel benchmark (210 language-form entries) for health-claim verification in English, Urdu script, and Roman Urdu. Each claim is paired across forms, covers one of seven health topics, and has a provisional Supported, Refuted, or Insufficient label with a source note. The benchmark is designed to test accuracy and consistency when representation changes while intended content is held fixed. We provide translation and evidence-review protocols, raw model-output logging, and clustered statistical analysis. A genuine pilot with Qwen2.5-1.5B-Instruct compares zero-shot verification with a preserved combined translation/classification prompt. Zero-shot accuracy is 55.7% in English and 32.9% in both Urdu and Roman Urdu; English versus Urdu and Roman Urdu differences are significant after Holm correction. However, the non-English predictions largely collapse to Refuted, so the results do not establish a causal script effect. The combined prompt is not a valid two-stage translation experiment because translations were not independently logged, and it produced 31 invalid outputs. Labels and translations remain unreviewed, and every Insufficient claim contains an absolute or exact-quantity term, creating a wording confound. The paper therefore reports an evidence-bounded pilot and a reproducible path to validated future experiments. Keywords: multilingual fact verification; Urdu NLP; Roman Urdu; health misinformation; script robustness
 
-1. Introduction
+
+## 1. Introduction
 
 Speakers of Urdu routinely write in two scripts: the Perso-Arabic Urdu script and Roman Urdu, a Latin-script rendering with no standard orthography. Health information seeking in these forms is common, and a verification system that changes its verdict when only the writing form changes could give some users less reliable information than others. We hold the claim content fixed and vary only the form, which isolates representation effects from content differences.
 
@@ -21,7 +22,8 @@ An evaluation design and open analysis code that analyses each model and conditi
 
 An audit of the benchmark itself, including a wording/label confound and a concrete plan to remove it.
 
-2. Related work
+
+## 2. Related work
 
 Claim verification against evidence was popularised by FEVER (Thorne et al., 2018) and extended to scientific claims in SciFact (Wadden et al., 2020). For public health, PUBHEALTH provides explained claims from fact-checking and health news sources (Kotonya and Toni, 2020), and HealthVer targets COVID-19 claims verified against scientific literature (Sarrouti et al., 2021). These resources are English-only.
 
@@ -31,7 +33,8 @@ Script variation is studied in work on transliteration for low-resource language
 
 Within the limits of a preliminary search, we did not find a health-claim benchmark that pairs English, Urdu script, and Roman Urdu versions of the same claim. A systematic literature search is still pending, so we make no strong novelty claim.
 
-3. Benchmark
+
+## 3. Benchmark
 
 3.1 Construction
 
@@ -69,7 +72,8 @@ Source fit: HC_008 asks about common-cold viruses but its source note concerns C
 
 Claim types: the original 'claim_type' field has about 50 inconsistent values; a six-group normalised field is provided and requires review.
 
-4. Translation and review protocol
+
+## 4. Translation and review protocol
 
 English is the reference wording. Urdu script and Roman Urdu are parallel renderings of it, not independent claims. An automated screen flags script mixing and numeric mismatches, and it found no script errors; it cannot judge fluency or semantic equivalence. Numerals written as words in Urdu (for example 'twelve months') were not treated as errors.
 
@@ -77,7 +81,8 @@ Every row will be reviewed by two independent reviewers who label the English cl
 
 Roman Urdu has no standard spelling. Variant spellings are recorded for the claims where we have noted them (10 of 70 at present); this field will be completed during review, because spelling variation is both a target phenomenon and a potential confound.
 
-5. Experimental design
+
+## 5. Experimental design
 
 5.1 Planned design
 
@@ -91,7 +96,8 @@ The run departed from the planned design in three ways that affect interpretatio
 
 The raw JSONL contains 31 missing parsed labels, all in the combined translate-then-verify condition and none in English. Under the released three-label schema, all 31 are invalid outputs and are counted as incorrect. The raw responses and parser fields are preserved for independent re-analysis.
 
-6. Evaluation
+
+## 6. Evaluation
 
 Metrics are accuracy, macro-F1 over the three labels, and invalid-output rate, computed separately for each model, condition, and form. Cross-form consistency is the proportion of claims for which all three forms receive the same label, and the proportion for which all three are correct; an invalid output is never counted as consistent.
 
@@ -99,7 +105,8 @@ Uncertainty uses a cluster bootstrap over claim IDs with 2,000 resamples (seed 4
 
 Intervals describe uncertainty over this sample of claims, not over all health claims or all Urdu speakers.
 
-7. Results
+
+## 7. Results
 
 All results are from the single pilot run described in Section 5.2 and describe one 1.5-billion-parameter model. Each cell covers 70 claims. Reference points are the majority-class rate (24/70 = 34.3%), the always-Refuted rate (23/70 = 32.9%), and the lexical-cue rule from Section 3.3 (46/70 = 65.7%).
 
@@ -129,7 +136,8 @@ Split by the wording flag from Section 3.3, zero-shot English accuracy was 82.1%
 
 Translate-then-verify cannot be assessed fairly as a two-stage intervention from this run. Of 140 non-English responses, 31 had no parsable label, often because the response was cut at 32 tokens before a label. Of the 109 valid answers, the Roman Urdu form received Supported for 51 of 53 and the Urdu form for 47 of 56, a strong shift toward Supported. Differences against zero-shot were not significant per form (exact McNemar: Urdu 21 versus 17 discordant claims, p = 0.627; Roman Urdu 22 versus 17, p = 0.522). Reading the raw responses (not a systematic coding), the internal translations were often wrong: for example, Roman Urdu HC_002 ('Antibiotics cure the common cold') was rendered 'Antibiotics can be used to treat cancer', and the Urdu text of HC_004 (mRNA vaccines change DNA) was rendered 'Code 19 converts human DNA to RNA'. Both were then labelled Supported.
 
-8. Discussion
+
+## 8. Discussion
 
 The pilot shows that this small model is close to chance on the two Urdu forms and does better in English, and that the English advantage survives correction for the three form comparisons. It does not show that Urdu script and Roman Urdu differ from each other, and it does not show a script effect that would carry over to larger or multilingual-trained models. Several features of the data limit what can be concluded.
 
@@ -143,7 +151,13 @@ The gold labels and translations are unreviewed. If an Urdu or Roman Urdu render
 
 The most informative next steps are to repeat the run with larger and multilingual-trained models, to fix the prompt (label definitions, adequate token limit, logged translation), to add the hedged-twin claims so wording no longer predicts the label, and to complete the human review before any of these numbers are cited as findings.
 
-9. Limitations and ethics
+
+## 10. Conclusion
+
+We release a three-form parallel health-claim benchmark, an evaluation pipeline, and a pilot run of one small model. The pilot found a significant English advantage over Urdu script and Roman Urdu, but that advantage coincides with the model defaulting to Refuted in the Urdu forms, and the translate-then-verify condition was compromised by a protocol deviation. We also document the benchmark's own weaknesses: unreviewed translations, provisional labels, and a wording/label confound. Whether script affects verification in stronger models remains an open question that needs corrected runs, additional models, and completed human review.
+
+
+## 11. Limitations and Ethics
 
 The benchmark is small and constructed; it is not a prevalence sample of health misinformation.
 
@@ -159,11 +173,6 @@ Results depend on checkpoint version, prompt wording, decoding settings, and the
 
 The benchmark is for research evaluation. It is not medical advice and must not be used as a clinical decision system. Claims and labels may be out of date as guidance changes.
 
-
-## 10. Conclusion
-
-We release a three-form parallel health-claim benchmark, an evaluation pipeline, and a pilot run of one small model. The pilot found a significant English advantage over Urdu script and Roman Urdu, but that advantage coincides with the model defaulting to Refuted in the Urdu forms, and the translate-then-verify condition was compromised by a protocol deviation. We also document the benchmark's own weaknesses: unreviewed translations, provisional labels, and a wording/label confound. Whether script affects verification in stronger models remains an open question that needs corrected runs, additional models, and completed human review.
-
 Data and code availability
 
 The benchmark (CSV and JSONL), audit workbooks, reviewer materials, notebook, and analysis code accompany this paper. The raw model outputs (420 records) and the generated analysis tables are included. Repository: https://github.com/ahsankhan2846/health-claim-verification-research. Code is released under the MIT License; benchmark reuse must preserve the provisional-review fields and source notes.
@@ -171,29 +180,6 @@ The benchmark (CSV and JSONL), audit workbooks, reviewer materials, notebook, an
 AI assistance statement
 
 An AI assistant helped inspect files, draft code, documentation, and parts of this manuscript. The author must verify all data, sources, translations, and claims and edit this statement to match the venue's policy.
-
-
-## References
-
-Ahmad, S., Iqbal, H., Ahsan, M., Naeem, N., Khan, M. A. R., Riaz, A., Manzoor, M. A., Wang, Y., and Nakov, P. (2025). UrduFactCheck: An agentic fact-checking framework for Urdu with evidence boosting and benchmarking. arXiv:2505.15063.
-
-Conneau, A., Rinott, R., Lample, G., Williams, A., Bowman, S., Schwenk, H., and Stoyanov, V. (2018). XNLI: Evaluating cross-lingual sentence representations. EMNLP.
-
-Gupta, A. and Srikumar, V. (2021). X-Fact: A new benchmark dataset for multilingual fact checking. ACL-IJCNLP (Short Papers), pp. 675-682.
-
-Joshi, P., Santy, S., Budhiraja, A., Bali, K., and Choudhury, M. (2020). The state and fate of linguistic diversity and inclusion in the NLP world. ACL.
-
-Kotonya, N. and Toni, F. (2020). Explainable automated fact-checking for public health claims. EMNLP.
-
-Ma, C., Liu, Y., Ye, H., and Schütze, H. (2024). Exploring the role of transliteration in in-context learning for low-resource languages written in non-Latin scripts. arXiv:2407.02320.
-
-Pikuliak, M., Srba, I., Moro, R., Hromadka, T., Smoleň, T., Melišek, M., Vykopal, I., Simko, J., Podroužek, J., and Bielikova, M. (2023). Multilingual previously fact-checked claim retrieval. EMNLP, pp. 16477-16500.
-
-Sarrouti, M., Ben Abacha, A., Mrabet, Y., and Demner-Fushman, D. (2021). Evidence-based fact-checking of health-related claims. Findings of EMNLP.
-
-Thorne, J., Vlachos, A., Christodoulopoulos, C., and Mittal, A. (2018). FEVER: a large-scale dataset for fact extraction and VERification. NAACL-HLT.
-
-Wadden, D., Lin, S., Lo, K., Wang, L. L., van Zuylen, M., Cohan, A., and Hajishirzi, H. (2020). Fact or fiction: Verifying scientific claims. EMNLP.
 
 
 ### Table 1
@@ -235,3 +221,25 @@ Wadden, D., Lin, S., Lo, K., Wang, L. L., van Zuylen, M., Cohan, A., and Hajishi
 | English | 88% (21/24) | 78% (18/23) | 0% (0/23) |
 | Urdu | 0% (0/24) | 96% (22/23) | 4% (1/23) |
 | Roman Urdu | 0% (0/24) | 100% (23/23) | 0% (0/23) |
+
+## References
+
+Ahmad, S., Iqbal, H., Ahsan, M., Naeem, N., Khan, M. A. R., Riaz, A., Manzoor, M. A., Wang, Y., and Nakov, P. (2025). UrduFactCheck: An agentic fact-checking framework for Urdu with evidence boosting and benchmarking. arXiv:2505.15063.
+
+Conneau, A., Rinott, R., Lample, G., Williams, A., Bowman, S., Schwenk, H., and Stoyanov, V. (2018). XNLI: Evaluating cross-lingual sentence representations. EMNLP.
+
+Gupta, A. and Srikumar, V. (2021). X-Fact: A new benchmark dataset for multilingual fact checking. ACL-IJCNLP (Short Papers), pp. 675-682.
+
+Joshi, P., Santy, S., Budhiraja, A., Bali, K., and Choudhury, M. (2020). The state and fate of linguistic diversity and inclusion in the NLP world. ACL.
+
+Kotonya, N. and Toni, F. (2020). Explainable automated fact-checking for public health claims. EMNLP.
+
+Ma, C., Liu, Y., Ye, H., and Schütze, H. (2024). Exploring the role of transliteration in in-context learning for low-resource languages written in non-Latin scripts. arXiv:2407.02320.
+
+Pikuliak, M., Srba, I., Moro, R., Hromadka, T., Smoleň, T., Melišek, M., Vykopal, I., Simko, J., Podroužek, J., and Bielikova, M. (2023). Multilingual previously fact-checked claim retrieval. EMNLP, pp. 16477-16500.
+
+Sarrouti, M., Ben Abacha, A., Mrabet, Y., and Demner-Fushman, D. (2021). Evidence-based fact-checking of health-related claims. Findings of EMNLP.
+
+Thorne, J., Vlachos, A., Christodoulopoulos, C., and Mittal, A. (2018). FEVER: a large-scale dataset for fact extraction and VERification. NAACL-HLT.
+
+Wadden, D., Lin, S., Lo, K., Wang, L. L., van Zuylen, M., Cohan, A., and Hajishirzi, H. (2020). Fact or fiction: Verifying scientific claims. EMNLP.

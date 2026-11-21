@@ -4,6 +4,8 @@ This directory contains the benchmark and manuscript artifacts. The empirical pi
 
 `final_research_paper.docx` and `final_research_paper.pdf` are generated from the corrected manuscript source in `../manuscript/final_research_paper.md`.
 
+`lrec_submission_anonymized.pdf` is the anonymized, two-column LREC-style review PDF; its source is in `../manuscript/lrec_submission.tex`.
+
 ## Important distinction
 
 The preserved raw condition named `translate_then_verify` used a combined prompt. It did not save a separate translation stage. Use `run_models_colab_corrected.ipynb` or `src/evaluate.py` for the true two-stage condition.

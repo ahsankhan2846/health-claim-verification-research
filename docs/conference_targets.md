@@ -15,3 +15,15 @@
 ## Current timing caution
 
 ACL 2026 and LREC 2026 deadlines have passed as of 2026-11-21. EACL 2027's official call lists an ARR submission deadline of 2026-08-03 and commitment deadline of 2026-10-11, also passed. Do not state a deadline without checking the next official call. LREC's author kit places limitations and ethics after the conclusion, which should be followed if that venue is selected.
+
+## LREC-format package prepared
+
+The repository includes `manuscript/lrec_submission.tex`,
+`manuscript/lrec_template/lrec2026.sty`, and
+`deliverables/lrec_submission_anonymized.pdf`. The source uses the official
+review option, A4 two-column layout, an anonymized author block, and places
+limitations/ethics after the conclusion. The compiled submission PDF is three
+content pages, within the 4–8 page limit.
+
+This is compliance with the 2026 kit, not evidence that a future call has the
+same dates or rules.
