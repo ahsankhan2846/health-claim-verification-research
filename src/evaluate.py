@@ -19,6 +19,7 @@ from pathlib import Path
 import pandas as pd
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import set_seed
 
 from .analysis import LABELS, normalize_label
 
@@ -82,6 +83,7 @@ def prompt_verify_english(claim: str) -> str:
 
 
 def run(args: argparse.Namespace) -> None:
+    set_seed(args.seed)
     data = pd.read_csv(args.dataset)
     required = {"claim_id", "english", "urdu", "roman_urdu", "gold_label", "topic", "claim_type"}
     missing = required - set(data.columns)

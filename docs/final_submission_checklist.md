@@ -15,5 +15,8 @@
 | Literature positioning | Partially completed; bibliography needs author verification | Yes |
 | Clean-environment tests | Completed for analysis pipeline | No |
 | Venue template and page compliance | Pending target selection | Yes |
+| Editable manuscript source | Completed | No |
+| Peer-review simulation | Completed | No |
+| PDF export | Not available in current environment | No |
 
 The project is not yet conference-ready in the strong sense. It is a reproducible single-model pilot with an explicit path to a defensible resource paper.

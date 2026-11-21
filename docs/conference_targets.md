@@ -2,7 +2,7 @@
 
 ## Best-fit eventual target
 
-**LREC-COLING-style resource/evaluation venue.** The benchmark and annotation workflow are resource-oriented, and the paper can foreground data documentation, translation quality, and reproducibility. The 2026 LREC call required 4–8 pages excluding references and had an October 2025 submission deadline, so that cycle is closed; check the next official call before submission.
+**LREC-COLING-style resource/evaluation venue.** The benchmark and annotation workflow are resource-oriented, and the paper can foreground data documentation, translation quality, and reproducibility. The official LREC 2026 call required 4–8 pages excluding references and had an October 17, 2025 submission deadline, so that cycle is closed; check the next official call before submission.
 
 ## Ambitious target
 
@@ -14,4 +14,4 @@
 
 ## Current timing caution
 
-ACL 2026 and LREC 2026 deadlines have passed as of 2026-11-21. EACL 2027's official call lists an ARR submission deadline of 2026-08-03 and commitment deadline of 2026-10-11, also passed. Do not state a deadline without checking the next official call.
+ACL 2026 and LREC 2026 deadlines have passed as of 2026-11-21. EACL 2027's official call lists an ARR submission deadline of 2026-08-03 and commitment deadline of 2026-10-11, also passed. Do not state a deadline without checking the next official call. LREC's author kit places limitations and ethics after the conclusion, which should be followed if that venue is selected.

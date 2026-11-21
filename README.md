@@ -5,6 +5,7 @@
 ## What is in this repository?
 
 - `deliverables/`: benchmark, manuscript, annotation materials, audit workbooks, and corrected Colab notebook.
+- `manuscript/`: editable Markdown source for the conference manuscript.
 - `results/`: preserved raw Qwen pilot outputs, original derived files, corrected denominator-aware analysis, and figures.
 - `src/`: reproducible evaluation and analysis code.
 - `prompts/`: versioned prompt templates.
@@ -23,6 +24,8 @@ The repository contains one genuine pilot run:
 - No few-shot run and no true two-stage translation run are present
 
 The combined prompt is preserved for auditability but must not be described as a two-stage translation intervention. The new pipeline can run a proper two-stage condition and saves the translation artifact separately.
+
+The current manuscript reports the preserved raw JSONL counts, including 17 invalid Roman Urdu outputs in the combined-prompt condition. It should not be replaced by an uploaded draft whose tables disagree with `results/raw_outputs.jsonl`.
 
 ## Reproduce analysis
 
