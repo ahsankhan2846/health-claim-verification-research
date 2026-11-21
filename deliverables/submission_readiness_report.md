@@ -1,11 +1,11 @@
 # Submission-readiness gate
 
-## Overall status: **Not yet honest to submit**
+## Overall status: **Not yet ready for empirical submission**
 
 The package is locally complete and reproducible as a research scaffold, but two external gates remain mandatory:
 
 1. **Human validation:** qualified Urdu/Roman Urdu reviewers and independent evidence/label reviewers must complete and sign the supplied sheets.
-2. **Experiment execution:** actual model runs must produce retained raw outputs and logs before any empirical Results section can be submitted.
+2. **Remaining experiment execution:** few-shot evaluation and preferably additional models are not yet complete.
 
 ## Gate results
 
@@ -21,9 +21,9 @@ The package is locally complete and reproducible as a research scaffold, but two
 | Source-label correctness | Requires human validation | Audit workbook prepared |
 | Annotation agreement | Requires human validation | No annotators or kappa fabricated |
 | Few-shot leakage control | Completed in notebook | Separate demonstration file required |
-| Model execution | Requires experiment execution | No credentials/checkpoints/results supplied |
-| Statistical results | Requires experiment execution | Analysis code exists; no numerical findings generated |
-| Manuscript evidence claims | Partially completed | Results explicitly marked pending |
+| Model execution | Completed, pilot only | Qwen 2.5 1.5B zero-shot and translate-then-verify: 420 genuine outputs |
+| Statistical results | Completed, pilot only | Accuracy, macro-F1, cluster bootstrap, consistency, McNemar, and Holm tables generated |
+| Manuscript evidence claims | Partially completed | Pilot Results are evidence-bounded; human validation and few-shot remain pending |
 
 ## Required final author actions
 

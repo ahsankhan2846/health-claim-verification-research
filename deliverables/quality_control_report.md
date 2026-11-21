@@ -2,17 +2,17 @@
 
 | Item | Status | Evidence |
 |---|---|---|
-| Dataset completeness | Completed | 70 unique IDs, 210 language-form fields, HC_001–HC_070 |
+| Dataset completeness | Completed | 70 unique IDs, 210 language-form entries, HC_001–HC_070 |
 | Exact label counts | Completed | Supported 24, Refuted 23, Insufficient 23 |
 | Topic distribution | Completed | Seven topics, ten claims per topic |
 | Translation validation | Requires human validation | Automated screening report generated; no native-speaker review claimed |
 | Source verification | Partially completed | Source/title/note fields present; outbound URL checks blocked in this environment |
 | Annotation status | Requires human validation | Reviewer sheet and protocol generated; no annotations or agreement scores claimed |
 | Data leakage status | Completed in code/protocol | Few-shot cell rejects missing separate demonstrations and checks ID overlap |
-| Notebook execution | Requires experiment execution | Notebook syntax generated and guarded; no model was run |
-| Statistical analysis | Partially completed | `analysis.py` implements metrics, 2,000-cluster bootstrap, McNemar, and Holm correction; no results exist |
-| Manuscript status | Partially completed | Revised DOCX separates methods from pending empirical results |
-| Remaining limitations | Requires human validation / experiment execution | See `limitations_and_pending_work.md` |
+| Notebook execution | Completed, pilot only | Genuine Qwen 2.5 1.5B zero-shot and translate-then-verify runs completed |
+| Statistical analysis | Completed, pilot only | Raw metrics, 2,000-cluster bootstrap, McNemar, and Holm tables generated |
+| Manuscript status | Partially completed | Empirical pilot results added; translation/source review and remaining conditions remain pending |
+| Remaining limitations | Requires human validation / few-shot execution | See `limitations_and_pending_work.md` |
 
 ## Existing-material audit findings
 

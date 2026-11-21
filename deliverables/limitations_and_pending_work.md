@@ -8,12 +8,12 @@
 - The prior audit contains entries that do not match the current 30-row CSV; those discrepancies are recorded rather than silently treated as corrections.
 - The manuscript bibliography and novelty claim require final bibliographic and literature-search verification.
 
-## Requires experiment execution
+## Pilot experiment completed
 
-- No model inference has been run in this handoff.
-- No raw model responses, confidence values, execution logs, accuracy, macro-F1, confidence intervals, McNemar tests, or cross-form consistency results exist.
-- The notebook requires a model checkpoint, compatible hardware, package installation, and any required credentials.
-- A separate, non-test few-shot demonstration file must be supplied before enabling few-shot evaluation.
+- Genuine zero-shot and translate-then-verify outputs exist for Qwen 2.5 1.5B-Instruct, revision `989aa7980e4cf806f80c7fef2b1adb7bc71aa306`.
+- Raw outputs contain 420 rows, 420 unique run IDs, and no execution errors.
+- A separate, non-test few-shot demonstration file has not been supplied, so few-shot was not executed.
+- No calibrated confidence values were collected.
 
 ## Methodological limitations
 

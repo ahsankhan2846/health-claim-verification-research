@@ -1,0 +1,43 @@
+condition,topic,form,n,correct,accuracy,invalid_n
+translate_then_verify,Diabetes/blood pressure,english,10,7,0.7,0
+translate_then_verify,Diabetes/blood pressure,roman_urdu,10,3,0.3,4
+translate_then_verify,Diabetes/blood pressure,urdu,10,3,0.3,3
+translate_then_verify,Home remedies,english,10,6,0.6,0
+translate_then_verify,Home remedies,roman_urdu,10,4,0.4,0
+translate_then_verify,Home remedies,urdu,10,2,0.2,1
+translate_then_verify,Infectious disease,english,10,7,0.7,0
+translate_then_verify,Infectious disease,roman_urdu,10,3,0.3,1
+translate_then_verify,Infectious disease,urdu,10,5,0.5,2
+translate_then_verify,Maternal/child health,english,10,3,0.3,0
+translate_then_verify,Maternal/child health,roman_urdu,10,2,0.2,4
+translate_then_verify,Maternal/child health,urdu,10,3,0.3,3
+translate_then_verify,Medication use,english,10,7,0.7,0
+translate_then_verify,Medication use,roman_urdu,10,2,0.2,3
+translate_then_verify,Medication use,urdu,10,2,0.2,2
+translate_then_verify,Nutrition,english,10,5,0.5,0
+translate_then_verify,Nutrition,roman_urdu,10,3,0.3,1
+translate_then_verify,Nutrition,urdu,10,3,0.3,3
+translate_then_verify,Vaccines,english,10,4,0.4,0
+translate_then_verify,Vaccines,roman_urdu,10,1,0.1,4
+translate_then_verify,Vaccines,urdu,10,1,0.1,0
+zero_shot,Diabetes/blood pressure,english,10,7,0.7,0
+zero_shot,Diabetes/blood pressure,roman_urdu,10,2,0.2,0
+zero_shot,Diabetes/blood pressure,urdu,10,1,0.1,0
+zero_shot,Home remedies,english,10,6,0.6,0
+zero_shot,Home remedies,roman_urdu,10,4,0.4,0
+zero_shot,Home remedies,urdu,10,4,0.4,0
+zero_shot,Infectious disease,english,10,7,0.7,0
+zero_shot,Infectious disease,roman_urdu,10,4,0.4,0
+zero_shot,Infectious disease,urdu,10,4,0.4,0
+zero_shot,Maternal/child health,english,10,3,0.3,0
+zero_shot,Maternal/child health,roman_urdu,10,3,0.3,0
+zero_shot,Maternal/child health,urdu,10,4,0.4,0
+zero_shot,Medication use,english,10,7,0.7,0
+zero_shot,Medication use,roman_urdu,10,5,0.5,0
+zero_shot,Medication use,urdu,10,5,0.5,0
+zero_shot,Nutrition,english,10,5,0.5,0
+zero_shot,Nutrition,roman_urdu,10,2,0.2,0
+zero_shot,Nutrition,urdu,10,2,0.2,0
+zero_shot,Vaccines,english,10,4,0.4,0
+zero_shot,Vaccines,roman_urdu,10,3,0.3,0
+zero_shot,Vaccines,urdu,10,3,0.3,0
