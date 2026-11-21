@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "label_definitions": {
+    "Supported": "Reliable evidence supports the claim as written, including its scope and qualifiers.",
+    "Refuted": "Reliable evidence contradicts the claim as written.",
+    "Insufficient": "The available evidence does not establish the exact claim."
+  },
+  "verification_zero_shot": "Classify the claim as exactly one of Supported, Refuted, or Insufficient. Return only the label.\nClaim: {claim}\nLabel:",
+  "translation_stage": "Translate the following {form} health claim into English. Preserve negation, modality, quantifiers, numbers, units, dates, medical terms, and all qualifiers. Return only the translation.\nClaim: {claim}\nEnglish translation:",
+  "verification_translated_stage": "Classify the following English health claim as exactly one of Supported, Refuted, or Insufficient. Return only the label.\nClaim: {claim}\nLabel:",
+  "few_shot_note": "Few-shot demonstrations must be supplied in a separate file with no claim_id overlap with the held-out benchmark."
+}

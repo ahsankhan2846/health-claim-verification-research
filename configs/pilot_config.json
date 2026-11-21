@@ -1,0 +1,17 @@
+{
+  "dataset": "deliverables/final_benchmark_70.csv",
+  "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+  "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "seed": 42,
+  "temperature": 0.0,
+  "max_new_tokens": 32,
+  "conditions_completed": [
+    "zero_shot",
+    "translate_then_verify_combined_prompt"
+  ],
+  "conditions_pending": [
+    "few_shot",
+    "translate_then_verify_two_stage"
+  ],
+  "bootstrap_resamples": 2000
+}

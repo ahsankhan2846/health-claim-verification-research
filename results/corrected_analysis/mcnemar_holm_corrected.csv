@@ -1,0 +1,7 @@
+condition,left_form,right_form,left_correct_right_wrong,left_wrong_right_correct,discordant_pairs,p_exact,p_holm
+translate_then_verify,english,urdu,21,1,22,1.0967254638671875e-05,2.193450927734375e-05
+translate_then_verify,english,roman_urdu,22,1,23,5.7220458984375e-06,1.71661376953125e-05
+translate_then_verify,urdu,roman_urdu,6,5,11,1.0,1.0
+zero_shot,english,urdu,21,5,26,0.002493917942047119,0.007481753826141357
+zero_shot,english,roman_urdu,21,5,26,0.002493917942047119,0.007481753826141357
+zero_shot,urdu,roman_urdu,1,1,2,1.0,1.0

@@ -1,0 +1,6 @@
+{
+  "bootstrap_resamples": 2000,
+  "seed": 42,
+  "rows": 420,
+  "invalid_outputs": 31
+}

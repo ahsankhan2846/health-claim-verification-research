@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+.ipynb_checkpoints/
+.DS_Store
+*.log
+results/analysis/
+results/local/
+data/private/
+secrets/
+*.key
+*.pem
